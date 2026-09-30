@@ -1,0 +1,29 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@model Pages.Admin.DashboardModel
+@attribute [Authorize(Roles = "Admin")]
+
+<h1>Admin Dashboard</h1>
+<p>Welcome to the admin dashboard. This page is under construction.</p>
+
+<div class="text-center">
+    <p>Here you can manage administrative tasks and view important information.</p>
+        <section class="mt-4">
+            <h2>Current Users</h2>
+                @if (Model.Users != null)
+                {
+                    <ul class="list-group mt-3">
+                        @foreach (var user in Model.Users)
+                        {
+                            <li class="list-group-item">
+                                @user.UserName (@user.Email)
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No users found.</p>
+                }
+        </section>
+</div>

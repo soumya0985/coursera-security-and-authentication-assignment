@@ -1,0 +1,27 @@
+@page
+@model LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+<h2>User Login</h2>
+
+<form method="post" class="mt-3">
+	<div class="mb-3">
+		<label for="username" class="form-label">Username</label>
+		<input id="username" name="username" type="text" class="form-control" required />
+	</div>
+
+	<div class="mb-3">
+		<label for="password" class="form-label">Password</label>
+		<input id="password" name="password" type="password" class="form-control" required />
+	</div>
+
+	<button type="submit" class="btn btn-primary">Login</button>
+
+    @if (Model.StatusMessage != null)
+    {
+        var alertClass = Model.IsSuccess ? "text-success" : "text-danger";
+        <p class="@alertClass">@Model.StatusMessage</p>
+    }
+</form>
